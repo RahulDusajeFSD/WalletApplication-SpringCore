@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- Register the bean for Data Source -->
+	
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource"> <!-- #1 -->
+	
+	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>   <!-- #2 -->  
+	<property name="url" value="jdbc:mysql://localhost:3306/bankaccountdetails?serverTimezone=IST"></property>                 
+	<property name="username" value="root"></property>
+	<property name="password" value=""></property>
+	
+	</bean>
+
+	<context:annotation-config><!-- telling to enable annotations --></context:annotation-config>
+
+	<context:component-scan
+		base-package="com.ibm.walletSpring.bean"></context:component-scan>
+<context:component-scan
+		base-package="com.ibm.walletSpring.Dao"></context:component-scan>
+<context:component-scan
+		base-package="com.ibm.walletSpring.Service"></context:component-scan>
+<context:component-scan
+		base-package="com.ibm.walletSpring.ui"></context:component-scan>
+
+		</beans>
